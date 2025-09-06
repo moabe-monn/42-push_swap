@@ -6,9 +6,11 @@
 /*   By: moabe < moabe@student.42tokyo.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 19:04:37 by moabe             #+#    #+#             */
-/*   Updated: 2025/09/05 19:04:39 by moabe            ###   ########.fr       */
+/*   Updated: 2025/09/06 18:40:32 by moabe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "push_swap.h"
 
 static int	word_length(char const *str, char c)
 {
@@ -68,7 +70,7 @@ static	void	ft_free(char **split_str, int i)
 	free(split_str);
 }
 
-char	**ft_split(char const *s, char c)
+char	**ft_split(char *s, char c)
 {
 	char	**split_str;
 	int		i;

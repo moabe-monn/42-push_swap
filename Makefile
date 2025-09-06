@@ -6,7 +6,8 @@ NAME = push_swap
 SRCS = 	push_swap.c \
 		radix_sort.c \
 		push_swap_utils.c \
-		push_swap_input.c
+		push_swap_input.c \
+		ft_split.c
 
 OBJS = ${SRCS:.c=.o}
 
