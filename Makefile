@@ -7,7 +7,8 @@ SRCS = 	push_swap.c \
 		radix_sort.c \
 		push_swap_utils.c \
 		push_swap_input.c \
-		ft_split.c
+		ft_split.c \
+		push_swap_stack.c
 
 OBJS = ${SRCS:.c=.o}
 

@@ -6,7 +6,7 @@
 /*   By: moabe < moabe@student.42tokyo.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 18:02:53 by moabe             #+#    #+#             */
-/*   Updated: 2025/09/06 22:43:20 by moabe            ###   ########.fr       */
+/*   Updated: 2025/09/11 18:20:59 by moabe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ Stack *input_handle(int argc, char **argv) //stackにできる状態にする
 	char **string;
 	int  *numlist;
 	size_t	size;
+	Stack	*a;
 
 	string = ++argv;
 	if (argc == 2 && check_args2(*argv) == 1) // ./push_swap "1 3 6 2 8 6" 対策."1 3 6 2 8 6"をchar型のリストにする
@@ -82,7 +83,7 @@ Stack	*convert_into_stack(int *string, size_t size) //全部int型のリスト�
 	a->bottom = NULL; 
 	i = (int)a->size - 1;
 	while (0 <= i)
-		push_to_a(a, string[i--]);
+		push_to_stack(a, string[i--]);
 	return (a);
 }
 
