@@ -6,11 +6,12 @@
 /*   By: moabe < moabe@student.42tokyo.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 18:02:53 by moabe             #+#    #+#             */
-/*   Updated: 2025/09/11 18:20:59 by moabe            ###   ########.fr       */
+/*   Updated: 2025/09/12 15:05:48 by moabe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+void print_stack_status(Stack *stack, const char *label);
 
 Stack *input_handle(int argc, char **argv) //stackにできる状態にする
 {
@@ -78,15 +79,13 @@ Stack	*convert_into_stack(int *string, size_t size) //全部int型のリスト�
 	a = (Stack *)malloc(sizeof(Stack));
 	if (a == NULL)
 		return (NULL);
-	a->size = size;
 	a->top = NULL;
 	a->bottom = NULL; 
-	i = (int)a->size - 1;
+	i = (int)size - 1;
 	while (0 <= i)
 		push_to_stack(a, string[i--]);
 	return (a);
 }
-
 // int main(int argc, char *argv[])
 // {
 // 	char **string;

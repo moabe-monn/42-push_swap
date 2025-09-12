@@ -6,38 +6,34 @@
 /*   By: moabe < moabe@student.42tokyo.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 17:03:12 by moabe             #+#    #+#             */
-/*   Updated: 2025/09/11 18:36:12 by moabe            ###   ########.fr       */
+/*   Updated: 2025/09/12 15:27:31 by moabe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+void print_stack_status(Stack *stack, const char *label);
 
-// int main()
-// {
-// 	// argvの引数1個はここではじく
-// 	return (0);
-// }
+int main(int argc, char *argv[])
+{
+	Stack	*a;
+	Stack	*b;
+	if (argc != 1)
+	{
+		a = input_handle(argc, argv);
+		print_stack_status(a, "initinal a");
+		b = create_stack();
+		if (radix_sort(a, b) == 1)
+		{
+			write(1, "Error\n", 6);
+			return (1);
+		}
+		print_stack_status(a, "sorted a");
+	} //freeする？
+	return (0);
+}
 
-// void print_stack_status(Stack *stack, const char *operation_label)
-// {
-//     printf("\n>>>>>>>>>> After: %s >>>>>>>>>>\n", operation_label);
-//     if (stack == NULL || stack->size == 0)
-//     {
-//         printf("Stack is empty.\n");
-//         printf("Size: %ld\n", stack ? stack->size : 0);
-//         printf("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n");
-//         return;
-//     }
-//     printf("Stack (top to bottom): ");
-//     Node *current = stack->top;
-//     for (size_t i = 0; i < stack->size; i++)
-//     {
-//         printf("%d ", current->num);
-//         current = current->prev;
-//     }
-//     printf("\n");
-//     printf("Top element: %d\n", stack->top->num);
-//     printf("Bottom element: %d\n", stack->bottom->num);
-//     printf("Stack size: %ld\n", stack->size);
-//     printf("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n");
-// }
+//やること
+//同じ数があるとき排除する
+//負の数の扱い
+//一個だけ馬鹿でかいときの効率
+//

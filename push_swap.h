@@ -6,13 +6,14 @@
 /*   By: moabe < moabe@student.42tokyo.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 17:03:16 by moabe             #+#    #+#             */
-/*   Updated: 2025/09/11 21:33:56 by moabe            ###   ########.fr       */
+/*   Updated: 2025/09/12 15:06:11 by moabe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <limits.h>
 #include <stddef.h>
 #include <stdlib.h>
+#include <unistd.h> 
 #include <stdio.h> //いらなかったら消す
 
 typedef struct s_node {
@@ -35,7 +36,7 @@ char	**ft_split(char *s, char c);
 size_t	count_numbers(char **string);
 long	ft_atoi_md(char *nptr);
 Stack*	create_stack(void);
-int		push_to_stack(Stack *stack, int number);
+int		push_to_stack(Stack *stack, unsigned int number);
 long	pop_from_stack(Stack* stack);
 int		rotate_stack(Stack* stack);
 int		reverse_rotate_stack(Stack* stack);

@@ -6,7 +6,7 @@
 /*   By: moabe < moabe@student.42tokyo.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 17:03:18 by moabe             #+#    #+#             */
-/*   Updated: 2025/09/11 21:43:28 by moabe            ###   ########.fr       */
+/*   Updated: 2025/09/12 14:29:04 by moabe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ Stack* create_stack(void)
 }
 
 
-int	push_to_stack(Stack *stack, int number)
+int	push_to_stack(Stack *stack, unsigned int number)
 {
 	Node	*newnode;
 	
@@ -85,17 +85,6 @@ int rotate_stack(Stack* stack)
 		return (0);
 	stack->top = stack->top->prev;
 	stack->bottom = stack->bottom->prev;
-	return (0);
-}
-
-int reverse_rotate_stack(Stack* stack)
-{
-	if (stack == NULL || stack->top == NULL)
-		return (1);
-	else if (stack->size == 1)
-		return (0);
-	stack->top = stack->top->next;
-	stack->bottom = stack->bottom->next;
 	return (0);
 }
 
