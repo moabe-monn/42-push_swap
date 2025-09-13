@@ -6,7 +6,7 @@
 /*   By: moabe <moabe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 17:02:58 by moabe             #+#    #+#             */
-/*   Updated: 2025/09/13 18:44:49 by moabe            ###   ########.fr       */
+/*   Updated: 2025/09/13 20:42:47 by moabe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,15 @@ long	ft_atoi_md(char *nptr)
 	long		num;
 	int			sign;
 
+	//
+	printf("s = %s", nptr); //
+	//
 	num = 0;
 	sign = 1;
 	while (*nptr == ' ' || *nptr == '\n' || *nptr == '\t'
 		|| *nptr == '\v' || *nptr == '\f' || *nptr == '\r')
 		nptr++;
+	printf("t = %s", nptr); //
 	if (*nptr == '-' || *nptr == '+')
 		sign = 1 - ((*nptr++ == '-') << 1);
 	if (!(*nptr >= '0' && *nptr <= '9'))
@@ -58,4 +62,49 @@ size_t	count_numbers(char **string)
 	while (string[i] != NULL)
 		i++;
 	return (i);
+}
+
+size_t	count_length(char **string)
+{
+	size_t	ret;
+	size_t	i;
+	char	**sub;
+
+	ret = 0;
+	while (*string != NULL)
+	{
+		sub = ft_split(*string, ' ');
+		i = 0;
+		while (sub[i++] != NULL)
+			ret++;
+		double_pointer_free(sub);
+		string++;
+	}
+	return (ret);
+}
+
+char	*ft_strdup(const char *src)
+{
+	size_t	i;
+	size_t	len;
+	char	*copy;
+
+	if (src == NULL)
+		return (NULL);
+	len = 0;
+	while (src[len] != '\0')
+	{
+		len++;
+	}
+	copy = (char *)malloc((len + 1) * sizeof(char));
+	if (copy == NULL)
+		return (NULL);
+	i = 0;
+	while (i < len)
+	{
+		copy[i] = src[i];
+		i++;
+	}
+	copy[i] = '\0';
+	return (copy);
 }

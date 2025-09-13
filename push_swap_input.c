@@ -6,7 +6,7 @@
 /*   By: moabe <moabe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 18:02:53 by moabe             #+#    #+#             */
-/*   Updated: 2025/09/13 19:07:07 by moabe            ###   ########.fr       */
+/*   Updated: 2025/09/13 20:47:00 by moabe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,14 @@
 
 void	print_stack_status(t_Stack *stack, const char *label);
 
-t_Stack	*input_handle(int argc, char **argv) // stackにできる状態にする
+t_Stack	*input_handle(char **argv) // stackにできる状態にする
 {
 	char	**string;
 	int		*numlist;
 	size_t	size;
 	t_Stack	*a;
 
-	string = ++argv;
-	if (argc == 2 && check_args2(*argv) == 1)
-	{
-		string = ft_split(*argv, ' ');
-		if (string == NULL)
-			return (NULL);
-	}
+	string = find_string(++argv);
 	size = count_numbers(string);
 	numlist = convert_into_int(string, size);
 	if (numlist == NULL)
@@ -37,19 +31,7 @@ t_Stack	*input_handle(int argc, char **argv) // stackにできる状態にする
 	return (a);
 }
 
-int	check_args2(char *string) //その引数がかっこつきか否か判定
-{
-	while (*string)
-	{
-		if (*string == ' ')
-			return (1);
-		string++;
-	}
-	return (0);
-}
-
 int	*convert_into_int(char **string, size_t size)
-		//要素一個ずつint型に変換。int型から外れたり数字じゃないのはエラーでNULL返す
 {
 	int		*ret;
 	size_t	i;
@@ -69,6 +51,30 @@ int	*convert_into_int(char **string, size_t size)
 		string++;
 		i++;
 	}
+	return (ret);
+}
+
+char	**find_string(char **string)
+{
+	char	**ret;
+	char	**sub;
+	char	*substring;
+	size_t	i;
+	size_t	j;
+
+	ret = (char **)malloc(sizeof(char *) * (count_length(string) + 1));
+	i = 0;
+	while (*string)
+	{
+		substring = *string;
+		sub = ft_split(substring, ' ');
+		j = 0;
+		while (sub[j] != NULL)
+			ret[i++] = ft_strdup(sub[j++]);
+		double_pointer_free(sub);
+		string++;
+	}
+	ret[i] = NULL;
 	return (ret);
 }
 

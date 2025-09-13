@@ -6,7 +6,7 @@
 /*   By: moabe <moabe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 17:03:16 by moabe             #+#    #+#             */
-/*   Updated: 2025/09/13 16:01:37 by moabe            ###   ########.fr       */
+/*   Updated: 2025/09/13 20:47:09 by moabe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,7 @@ typedef struct s_stack
 	size_t			size;
 }					t_Stack;
 
-t_Stack				*input_handle(int args, char **argv);
-int					check_args2(char *string);
+t_Stack				*input_handle(char **argv);
 int					*convert_into_int(char **string, size_t size);
 t_Stack				*convert_into_stack(int *string, size_t size);
 char				**ft_split(char *s, char c);
@@ -48,3 +47,7 @@ int					binary_digit(t_Stack *a);
 int					bit_shift(t_Stack *a, t_Stack *b, int size, size_t i);
 void				free_stack(t_Stack *stack);
 void				coordinate_compression(int *string, size_t size, t_Stack *a);
+char				**find_string(char **string);
+size_t				count_length(char **string);
+void                double_pointer_free(char **string);
+char				*ft_strdup(const char *src);

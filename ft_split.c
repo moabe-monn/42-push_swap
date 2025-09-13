@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moabe < moabe@student.42tokyo.jp>          +#+  +:+       +#+        */
+/*   By: moabe <moabe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 19:04:37 by moabe             #+#    #+#             */
-/*   Updated: 2025/09/06 18:40:32 by moabe            ###   ########.fr       */
+/*   Updated: 2025/09/13 20:05:06 by moabe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,3 +98,27 @@ char	**ft_split(char *s, char c)
 	split_str[i] = NULL;
 	return (split_str);
 }
+
+// #include <stdio.h>
+// int	main(void)
+// {
+// 	char	**result;
+// 	int		i;
+
+// 	result = ft_split("2", ' ');
+// 	i = 0;
+
+// 	if (!result)
+// 	{
+// 		printf("メモリ確保失敗\n");
+// 		return (1);
+// 	}
+// 	while (result[i])
+// 	{
+// 		printf("%s\n", result[i]);
+// 		free(result[i]);
+// 		i++;
+// 	}
+// 	free(result);
+// 	return (0);
+// }
