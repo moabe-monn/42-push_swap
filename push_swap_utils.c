@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moabe < moabe@student.42tokyo.jp>          +#+  +:+       +#+        */
+/*   By: moabe <moabe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 17:02:58 by moabe             #+#    #+#             */
-/*   Updated: 2025/09/06 20:19:00 by moabe            ###   ########.fr       */
+/*   Updated: 2025/09/13 18:44:49 by moabe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,14 @@ long	ft_atoi_md(char *nptr)
 		return ((long)INT_MAX + 1);
 	while (*nptr >= '0' && *nptr <= '9')
 	{
-		if (!((*nptr >= '0' && *nptr <= '9') || *nptr == 0) || long_edge(num, *nptr - '0') != 1) //確認
+		if (!((*nptr >= '0' && *nptr <= '9') || *nptr == 0)
+			|| long_edge(num, *nptr - '0') != 1)
 			return ((long)INT_MAX + 1);
 		num = num * 10 + (*nptr++ - '0');
 	}
-	if (*nptr != 0 || (num * sign > (long)INT_MAX) || (num * sign < (long)INT_MIN))
-		return ((long)INT_MAX + 1); //intの範囲外はINT_MAX+1を返す
+	if (*nptr != 0 || (num * sign > (long)INT_MAX)
+		|| (num * sign < (long)INT_MIN))
+		return ((long)INT_MAX + 1);
 	return (num * sign);
 }
 
@@ -54,8 +56,6 @@ size_t	count_numbers(char **string)
 
 	i = 0;
 	while (string[i] != NULL)
-	{
 		i++;
-	}
 	return (i);
 }

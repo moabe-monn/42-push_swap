@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   radix_sort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moabe < moabe@student.42tokyo.jp>          +#+  +:+       +#+        */
+/*   By: moabe <moabe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 16:35:56 by moabe             #+#    #+#             */
-/*   Updated: 2025/09/12 14:32:20 by moabe            ###   ########.fr       */
+/*   Updated: 2025/09/13 18:03:53 by moabe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	radix_sort(Stack *a, Stack *b)
+int	radix_sort(t_Stack *a, t_Stack *b)
 {
-	int i;
-	int digit;
-	int size;
+	int	i;
+	int	digit;
+	int	size;
 
 	i = 0;
 	size = a->size;
@@ -30,40 +30,30 @@ int	radix_sort(Stack *a, Stack *b)
 	return (0);
 }
 
-int	binary_digit(Stack *a)
+int	binary_digit(t_Stack *a)
 {
-	unsigned int 	max;
-	size_t			i;
-	Node 			*node;
+	size_t	i;
+	size_t	size;
 
-	max = 0;
+	size = a->size;
 	i = 0;
-	node = a->top;
-	while (i < a->size)
+	while (size > 1)
 	{
-		if (max < node->num)
-			max = node->num;
-		node = node->prev;
+		size /= 2;
 		i++;
 	}
-	i = 0;
-	while (max > 1)
-	{
-		max /= 2;
-		i++;
-	}
-	return (i+1);
+	return (i + 1);
 }
 
-int bit_shift(Stack *a, Stack *b, int size, size_t i)
+int	bit_shift(t_Stack *a, t_Stack *b, int size, size_t i)
 {
-	int j;
-	long num;
+	int		j;
+	long	num;
 
 	j = 0;
 	while (j++ < size)
 	{
-		if (((a->top->num >> i) & 1) == 0)
+		if (((a->top->index >> i) & 1) == 0)
 		{
 			num = pop_from_stack(a);
 			if (num == (long)INT_MAX + 1 || push_to_stack(b, (int)num) == 1)
@@ -73,7 +63,7 @@ int bit_shift(Stack *a, Stack *b, int size, size_t i)
 		else
 		{
 			rotate_stack(a);
-			printf("ra");	
+			printf("ra");
 		}
 	}
 	while (b->size > 0)
@@ -86,19 +76,26 @@ int bit_shift(Stack *a, Stack *b, int size, size_t i)
 	return (0);
 }
 
-void print_stack_status(Stack *stack, const char *label) { // 消す
-    printf("--- %s ---\n", label);
-    if (stack == NULL || stack->size == 0) {
-        printf("Stack is empty.\n");
-        return;
-    }
-    printf("Stack (top to bottom): ");
-    Node *current = stack->top;
-    for (size_t i = 0; i < stack->size; i++) {
-        printf("%d ", current->num);
-        current = current->prev;
-    }
-    printf("\nSize: %ld\n", stack->size);
+void	print_stack_status(t_Stack *stack, const char *label) // 消す
+{
+	t_Node	*current;
+	size_t	i;
+
+	i = 0;
+	printf("--- %s ---\n", label);
+	if (stack == NULL || stack->size == 0)
+	{
+		printf("Stack is empty.\n");
+		return ;
+	}
+	printf("Stack (top to bottom): ");
+	current = stack->top;
+	while (i++ < stack->size)
+	{
+		printf("%d ", current->num);
+		current = current->prev;
+	}
+	printf("\nSize: %ld\n", stack->size);
 }
 
 // int main(void)
@@ -113,7 +110,7 @@ void print_stack_status(Stack *stack, const char *label) { // 消す
 //     push_to_stack(stack_a, 3);  // 011
 //     push_to_stack(stack_a, 7);  // 111
 // 	push_to_stack(stack_a, INT_MAX);
-    
+
 //     print_stack_status(stack_a, "Before Sort");
 
 //     printf("\n... Executing Radix Sort ...\n");
@@ -131,5 +128,5 @@ void print_stack_status(Stack *stack, const char *label) { // 消す
 //     free_stack(stack_a);
 //     free_stack(stack_b);
 
-//     return 0;
+//     return (0);
 // }

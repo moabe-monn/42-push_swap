@@ -8,7 +8,8 @@ SRCS = 	push_swap.c \
 		push_swap_utils.c \
 		push_swap_input.c \
 		ft_split.c \
-		push_swap_stack.c
+		push_swap_stack.c \
+		push_swap_index.c
 
 OBJS = ${SRCS:.c=.o}
 
@@ -18,7 +19,7 @@ $(NAME): $(OBJS)
 	$(CC) $(FLAG) -o $(NAME) $(OBJS)
 
 %.o: %.c
-	$(CC) $(FLAG) -c $< -o $@ 
+	$(CC) $(FLAG) -c $< -o $@
 
 clean:
 	rm -rf $(OBJS)

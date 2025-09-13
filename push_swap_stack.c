@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_stack.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moabe < moabe@student.42tokyo.jp>          +#+  +:+       +#+        */
+/*   By: moabe <moabe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 17:03:18 by moabe             #+#    #+#             */
-/*   Updated: 2025/09/12 14:29:04 by moabe            ###   ########.fr       */
+/*   Updated: 2025/09/13 15:57:41 by moabe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-Stack* create_stack(void)
+t_Stack	*create_stack(void)
 {
-	Stack *stack;
+	t_Stack	*stack;
 
-	stack = (Stack *)malloc(sizeof(Stack));
+	stack = (t_Stack *)malloc(sizeof(t_Stack));
 	if (stack == NULL)
 		return (NULL);
 	stack->top = NULL;
@@ -25,12 +25,11 @@ Stack* create_stack(void)
 	return (stack);
 }
 
-
-int	push_to_stack(Stack *stack, unsigned int number)
+int	push_to_stack(t_Stack *stack, unsigned int number)
 {
-	Node	*newnode;
-	
-	newnode = (Node *)malloc(sizeof(Node));
+	t_Node	*newnode;
+
+	newnode = (t_Node *)malloc(sizeof(t_Node));
 	if (newnode == NULL)
 		return (1);
 	newnode->num = number;
@@ -51,11 +50,10 @@ int	push_to_stack(Stack *stack, unsigned int number)
 	return (0);
 }
 
-
-long	pop_from_stack(Stack* stack)
+long	pop_from_stack(t_Stack *stack)
 {
 	int		ret;
-	Node	*old_top;
+	t_Node	*old_top;
 
 	if (stack == NULL || stack->top == NULL)
 		return ((long)INT_MAX + 1);
@@ -71,13 +69,13 @@ long	pop_from_stack(Stack* stack)
 	{
 		stack->top = stack->top->prev;
 		stack->top->next = stack->bottom;
-		stack->bottom->prev = stack->top;	
+		stack->bottom->prev = stack->top;
 	}
 	free(old_top);
 	return (ret);
 }
 
-int rotate_stack(Stack* stack)
+int	rotate_stack(t_Stack *stack)
 {
 	if (stack == NULL || stack->top == NULL)
 		return (1);
@@ -88,21 +86,23 @@ int rotate_stack(Stack* stack)
 	return (0);
 }
 
-void free_stack(Stack *stack)
+void	free_stack(t_Stack *stack)
 {
-    if (stack == NULL)
-        return;
-    if (stack->top != NULL)
-    {
-        Node *current = stack->top;
-        Node *temp;
-        stack->bottom->prev = NULL;
-        while (current != NULL)
-        {
-            temp = current;
-            current = current->prev;
-            free(temp);
-        }
-    }
-    free(stack);
+	t_Node	*current;
+	t_Node	*temp;
+
+	current = stack->top;
+	if (stack == NULL)
+		return ;
+	if (stack->top != NULL)
+	{
+		stack->bottom->prev = NULL;
+		while (current != NULL)
+		{
+			temp = current;
+			current = current->prev;
+			free(temp);
+		}
+	}
+	free(stack);
 }
