@@ -6,7 +6,7 @@
 /*   By: moabe <moabe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 16:35:56 by moabe             #+#    #+#             */
-/*   Updated: 2025/09/13 18:03:53 by moabe            ###   ########.fr       */
+/*   Updated: 2025/09/14 17:32:14 by moabe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,26 @@
 
 int	radix_sort(t_Stack *a, t_Stack *b)
 {
-	int	i;
-	int	digit;
-	int	size;
+	size_t	i;
+	size_t	digit;
+	size_t	size;
 
 	i = 0;
 	size = a->size;
-	digit = binary_digit(a);
-	while (i < digit)
+	if (size <= 5)
 	{
-		if (bit_shift(a, b, size, i) == 1)
+		if (push_swap_smallcase(size, a) == 1)
 			return (1);
-		i++;
+	}
+	else
+	{
+		digit = binary_digit(a);
+		while (i < digit)
+		{
+			if (bit_shift(a, b, size, i) == 1)
+				return (1);
+			i++;
+		}
 	}
 	return (0);
 }
@@ -82,7 +90,7 @@ void	print_stack_status(t_Stack *stack, const char *label) // 消す
 	size_t	i;
 
 	i = 0;
-	printf("--- %s ---\n", label);
+	printf("\n--- %s ---\n", label);
 	if (stack == NULL || stack->size == 0)
 	{
 		printf("Stack is empty.\n");

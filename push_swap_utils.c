@@ -6,7 +6,7 @@
 /*   By: moabe <moabe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 17:02:58 by moabe             #+#    #+#             */
-/*   Updated: 2025/09/13 20:42:47 by moabe            ###   ########.fr       */
+/*   Updated: 2025/09/14 15:18:08 by moabe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,11 @@ long	ft_atoi_md(char *nptr)
 	long		num;
 	int			sign;
 
-	//
-	printf("s = %s", nptr); //
-	//
 	num = 0;
 	sign = 1;
 	while (*nptr == ' ' || *nptr == '\n' || *nptr == '\t'
 		|| *nptr == '\v' || *nptr == '\f' || *nptr == '\r')
 		nptr++;
-	printf("t = %s", nptr); //
 	if (*nptr == '-' || *nptr == '+')
 		sign = 1 - ((*nptr++ == '-') << 1);
 	if (!(*nptr >= '0' && *nptr <= '9'))

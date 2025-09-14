@@ -6,7 +6,7 @@
 /*   By: moabe <moabe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 17:03:12 by moabe             #+#    #+#             */
-/*   Updated: 2025/09/13 20:48:06 by moabe            ###   ########.fr       */
+/*   Updated: 2025/09/14 19:05:08 by moabe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,14 @@ int	main(int argc, char *argv[])
 {
 	t_Stack	*a;
 	t_Stack	*b;
+
 	(void)argc;
 	if (argc != 1)
 	{
 		a = input_handle(argv);
 		if (a == NULL)
 		{
-			write(1, "Error\n", 6);
+			write(2, "Error\n", 6);
 			return (1);
 		}
 		print_stack_status(a, "initinal a");
@@ -33,8 +34,10 @@ int	main(int argc, char *argv[])
 			write(1, "Error\n", 6);
 			return (1);
 		}
-		print_stack_status(a, "sorted a");
-	} //freeする？
+		print_stack_status(a, "sorted a");//
+		free_stack(a);
+		free_stack(b);
+	}
 	return (0);
 }
 
@@ -51,5 +54,12 @@ void	double_pointer_free(char **string)
 }
 
 //やること
-//同じ数があるとき排除する
-//./push_swap " 1"
+
+//メモリリーク
+//norminette
+//./push_swap "1 3 2 4" "  " 5 8　対策
+//tester
+//int超えたらErrorなのかどうかMandatory見る
+//printを消す
+//mallocは7個
+//Mandatoryに即してることの確認

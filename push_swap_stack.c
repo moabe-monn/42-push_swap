@@ -6,7 +6,7 @@
 /*   By: moabe <moabe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 17:03:18 by moabe             #+#    #+#             */
-/*   Updated: 2025/09/13 15:57:41 by moabe            ###   ########.fr       */
+/*   Updated: 2025/09/14 16:46:12 by moabe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_Stack	*create_stack(void)
 	return (stack);
 }
 
-int	push_to_stack(t_Stack *stack, unsigned int number)
+int	push_to_stack(t_Stack *stack, int number)
 {
 	t_Node	*newnode;
 

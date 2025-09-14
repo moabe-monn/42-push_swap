@@ -6,7 +6,7 @@
 /*   By: moabe <moabe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 18:02:53 by moabe             #+#    #+#             */
-/*   Updated: 2025/09/13 20:47:00 by moabe            ###   ########.fr       */
+/*   Updated: 2025/09/14 18:52:22 by moabe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,10 @@ t_Stack	*input_handle(char **argv) // stackにできる状態にする
 	if (numlist == NULL)
 		return (NULL);
 	a = convert_into_stack(numlist, size);
-	coordinate_compression(numlist, size, a);
+	if (cd_compression(numlist, size, a) == 1)
+		return (NULL);
+	double_pointer_free(string);
+	free(numlist);
 	return (a);
 }
 
@@ -37,7 +40,7 @@ int	*convert_into_int(char **string, size_t size)
 	size_t	i;
 
 	ret = (int *)malloc(sizeof(int) * size);
-	if (ret == NULL)
+	if (ret == NULL || *string == NULL)
 		return (NULL);
 	i = 0;
 	while (*string != NULL)
@@ -73,6 +76,7 @@ char	**find_string(char **string)
 			ret[i++] = ft_strdup(sub[j++]);
 		double_pointer_free(sub);
 		string++;
+		free(substring);
 	}
 	ret[i] = NULL;
 	return (ret);
@@ -93,6 +97,7 @@ t_Stack	*convert_into_stack(int *string, size_t size)
 		push_to_stack(a, string[i--]);
 	return (a);
 }
+
 // int main(int argc, char *argv[])
 // {
 // 	char **string;

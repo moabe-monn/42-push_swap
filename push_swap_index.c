@@ -6,7 +6,7 @@
 /*   By: moabe <moabe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 16:08:32 by moabe             #+#    #+#             */
-/*   Updated: 2025/09/13 17:41:32 by moabe            ###   ########.fr       */
+/*   Updated: 2025/09/14 15:26:39 by moabe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ int	*bubble_sort(int *string, size_t size)
 		{
 			if (string[j] < string[j - 1])
 				ft_swap(&string[j], &string[j - 1]);
+			else if (string[j] == string[j - 1])
+				return (NULL);
 			j--;
 		}
 		i++;
@@ -41,7 +43,7 @@ int	*bubble_sort(int *string, size_t size)
 	return (string);
 }
 
-void	coordinate_compression(int *string, size_t size, t_Stack *a)
+int	cd_compression(int *string, size_t size, t_Stack *a)
 {
 	int		num;
 	size_t	i;
@@ -49,6 +51,8 @@ void	coordinate_compression(int *string, size_t size, t_Stack *a)
 
 	i = 0;
 	string = bubble_sort(string, size);
+	if (string == NULL)
+		return (1);
 	while (i++ < a->size)
 	{
 		j = 0;
@@ -63,4 +67,5 @@ void	coordinate_compression(int *string, size_t size, t_Stack *a)
 		}
 		rotate_stack(a);
 	}
+	return (0);
 }
