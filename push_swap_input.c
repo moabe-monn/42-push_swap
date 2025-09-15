@@ -6,13 +6,13 @@
 /*   By: moabe < moabe@student.42tokyo.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 18:02:53 by moabe             #+#    #+#             */
-/*   Updated: 2025/09/15 13:53:56 by moabe            ###   ########.fr       */
+/*   Updated: 2025/09/15 18:49:42 by moabe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	print_stack_status(t_Stack *stack, const char *label);
+// void	print_stack_status(t_Stack *stack, const char *label);
 
 t_Stack	*input_handle(char **argv) // stackにできる状態にする
 {

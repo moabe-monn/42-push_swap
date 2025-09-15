@@ -6,12 +6,12 @@
 /*   By: moabe < moabe@student.42tokyo.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/14 15:27:48 by moabe             #+#    #+#             */
-/*   Updated: 2025/09/15 15:05:56 by moabe            ###   ########.fr       */
+/*   Updated: 2025/09/15 18:49:35 by moabe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-void print_stack_status(t_Stack *stack, const char *label);
+// void print_stack_status(t_Stack *stack, const char *label);
 
 int	push_swap_smallcase(size_t size, t_Stack *a)
 {

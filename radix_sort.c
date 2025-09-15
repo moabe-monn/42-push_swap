@@ -6,7 +6,7 @@
 /*   By: moabe < moabe@student.42tokyo.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 16:35:56 by moabe             #+#    #+#             */
-/*   Updated: 2025/09/15 14:44:52 by moabe            ###   ########.fr       */
+/*   Updated: 2025/09/15 18:48:17 by moabe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,27 +84,27 @@ int	bit_shift(t_Stack *a, t_Stack *b, int size, size_t i)
 	return (0);
 }
 
-void	print_stack_status(t_Stack *stack, const char *label) // 消す
-{
-	t_Node	*current;
-	size_t	i;
+// void	print_stack_status(t_Stack *stack, const char *label) // 消す
+// {
+// 	t_Node	*current;
+// 	size_t	i;
 
-	i = 0;
-	printf("\n--- %s ---\n", label);
-	if (stack == NULL || stack->size == 0)
-	{
-		printf("Stack is empty.\n");
-		return ;
-	}
-	printf("Stack (top to bottom): ");
-	current = stack->top;
-	while (i++ < stack->size)
-	{
-		printf("%d ", current->num);
-		current = current->prev;
-	}
-	printf("\nSize: %ld\n", stack->size);
-}
+// 	i = 0;
+// 	printf("\n--- %s ---\n", label);
+// 	if (stack == NULL || stack->size == 0)
+// 	{
+// 		printf("Stack is empty.\n");
+// 		return ;
+// 	}
+// 	printf("Stack (top to bottom): ");
+// 	current = stack->top;
+// 	while (i++ < stack->size)
+// 	{
+// 		printf("%d ", current->num);
+// 		current = current->prev;
+// 	}
+// 	printf("\nSize: %ld\n", stack->size);
+// }
 
 // int main(void)
 // {

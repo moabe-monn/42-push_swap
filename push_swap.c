@@ -6,12 +6,12 @@
 /*   By: moabe < moabe@student.42tokyo.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 17:03:12 by moabe             #+#    #+#             */
-/*   Updated: 2025/09/15 14:19:18 by moabe            ###   ########.fr       */
+/*   Updated: 2025/09/15 18:50:47 by moabe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-void print_stack_status(t_Stack *stack, const char *label);
+// void print_stack_status(t_Stack *stack, const char *label);
 
 int	main(int argc, char *argv[])
 {
@@ -27,14 +27,14 @@ int	main(int argc, char *argv[])
 			write(2, "Error\n", 6);
 			return (1);
 		}
-		print_stack_status(a, "initinal a");
+		// print_stack_status(a, "initinal a");
 		b = create_stack();
 		if (radix_sort(a, b) == 1)
 		{
 			write(1, "Error\n", 6);
 			return (1);
 		}
-		print_stack_status(a, "sorted a");//
+		// print_stack_status(a, "sorted a");
 		free_stack(a);
 		free_stack(b);
 	}
