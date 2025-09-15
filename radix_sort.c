@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   radix_sort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moabe <moabe@student.42.fr>                +#+  +:+       +#+        */
+/*   By: moabe < moabe@student.42tokyo.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 16:35:56 by moabe             #+#    #+#             */
-/*   Updated: 2025/09/14 17:32:14 by moabe            ###   ########.fr       */
+/*   Updated: 2025/09/15 14:44:52 by moabe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,12 +66,12 @@ int	bit_shift(t_Stack *a, t_Stack *b, int size, size_t i)
 			num = pop_from_stack(a);
 			if (num == (long)INT_MAX + 1 || push_to_stack(b, (int)num) == 1)
 				return (1);
-			printf("pb");
+			printf("pb\n");
 		}
 		else
 		{
 			rotate_stack(a);
-			printf("ra");
+			printf("ra\n");
 		}
 	}
 	while (b->size > 0)
@@ -79,7 +79,7 @@ int	bit_shift(t_Stack *a, t_Stack *b, int size, size_t i)
 		num = pop_from_stack(b);
 		if (num == (long)INT_MAX + 1 || push_to_stack(a, (int)num) == 1)
 			return (1);
-		printf("pa");
+		printf("pa\n");
 	}
 	return (0);
 }

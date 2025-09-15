@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_input.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moabe <moabe@student.42.fr>                +#+  +:+       +#+        */
+/*   By: moabe < moabe@student.42tokyo.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 18:02:53 by moabe             #+#    #+#             */
-/*   Updated: 2025/09/14 18:52:22 by moabe            ###   ########.fr       */
+/*   Updated: 2025/09/15 13:53:56 by moabe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ t_Stack	*input_handle(char **argv) // stackにできる状態にする
 	t_Stack	*a;
 
 	string = find_string(++argv);
+	if (string == NULL)
+		return (NULL);
 	size = count_numbers(string);
 	numlist = convert_into_int(string, size);
 	if (numlist == NULL)
@@ -66,17 +68,20 @@ char	**find_string(char **string)
 	size_t	j;
 
 	ret = (char **)malloc(sizeof(char *) * (count_length(string) + 1));
+	if (ret == NULL)
+		return (NULL);
 	i = 0;
 	while (*string)
 	{
 		substring = *string;
 		sub = ft_split(substring, ' ');
 		j = 0;
+		if (sub[j] == NULL)
+			return (NULL);
 		while (sub[j] != NULL)
 			ret[i++] = ft_strdup(sub[j++]);
 		double_pointer_free(sub);
 		string++;
-		free(substring);
 	}
 	ret[i] = NULL;
 	return (ret);
@@ -92,6 +97,7 @@ t_Stack	*convert_into_stack(int *string, size_t size)
 		return (NULL);
 	a->top = NULL;
 	a->bottom = NULL;
+	a->size = 0;
 	i = (int)size - 1;
 	while (0 <= i)
 		push_to_stack(a, string[i--]);

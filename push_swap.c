@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moabe <moabe@student.42.fr>                +#+  +:+       +#+        */
+/*   By: moabe < moabe@student.42tokyo.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 17:03:12 by moabe             #+#    #+#             */
-/*   Updated: 2025/09/14 19:05:08 by moabe            ###   ########.fr       */
+/*   Updated: 2025/09/15 14:19:18 by moabe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,8 @@ void	double_pointer_free(char **string)
 
 //やること
 
-//メモリリーク
 //norminette
-//./push_swap "1 3 2 4" "  " 5 8　対策
 //tester
 //int超えたらErrorなのかどうかMandatory見る
-//printを消す
-//mallocは7個
+//printの関数を消す
 //Mandatoryに即してることの確認

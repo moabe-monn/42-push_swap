@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_small.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moabe <moabe@student.42.fr>                +#+  +:+       +#+        */
+/*   By: moabe < moabe@student.42tokyo.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/14 15:27:48 by moabe             #+#    #+#             */
-/*   Updated: 2025/09/14 18:26:19 by moabe            ###   ########.fr       */
+/*   Updated: 2025/09/15 15:05:56 by moabe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,10 @@ int	push_swap_smallcase(size_t size, t_Stack *a)
 	else if (size == 2)
 	{
 		if (a->top->num > a->bottom->num)
-			(void)rotate_stack(a); //つけて何が変わる？
+		{
+			(void)rotate_stack(a);
+			printf("ra\n");
+		}
 	}
 	else if (size == 3)
 		push_swap_case3(a);
@@ -46,16 +49,21 @@ void	push_swap_case3(t_Stack *a)
 		if (confirm_assemble(a) == 0)
 			return ;
 		rotate_stack(a);
+		printf("ra\n");
 	}
 	num = pop_from_stack(a);
+	printf("pb\n");
 	rotate_stack(a);
+	printf("ra\n");
 	push_to_stack(a, (int)num);
+	printf("pa\n");
 	i = 0;
 	while (i++ < 3)
 	{
 		if (confirm_assemble(a) == 0)
 			return ;
 		rotate_stack(a);
+		printf("ra\n");
 	}
 }
 
@@ -71,12 +79,15 @@ void	push_swap_case4(t_Stack *a, size_t number)
 		if (a->top->index == number)
 		{
 			min = pop_from_stack(a);
+			printf("pb\n");
 			break ;
 		}
 		rotate_stack(a);
+		printf("ra\n");
 	}
 	push_swap_case3(a);
 	push_to_stack(a, (int)min);
+	printf("pa\n");
 }
 
 void	push_swap_case5(t_Stack *a)
@@ -91,12 +102,15 @@ void	push_swap_case5(t_Stack *a)
 		if (a->top->index == 0)
 		{
 			min = pop_from_stack(a);
+			printf("pb\n");
 			break ;
 		}
 		rotate_stack(a);
+		printf("ra\n");
 	}
 	push_swap_case4(a, 1);
 	push_to_stack(a, (int)min);
+	printf("pa\n");
 }
 
 int	confirm_assemble(t_Stack *a)

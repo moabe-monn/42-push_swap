@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_index.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moabe <moabe@student.42.fr>                +#+  +:+       +#+        */
+/*   By: moabe < moabe@student.42tokyo.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 16:08:32 by moabe             #+#    #+#             */
-/*   Updated: 2025/09/14 15:26:39 by moabe            ###   ########.fr       */
+/*   Updated: 2025/09/15 12:29:00 by moabe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int	cd_compression(int *string, size_t size, t_Stack *a)
 	size_t	j;
 
 	i = 0;
+	num = 0;
 	string = bubble_sort(string, size);
 	if (string == NULL)
 		return (1);
@@ -57,13 +58,11 @@ int	cd_compression(int *string, size_t size, t_Stack *a)
 	{
 		j = 0;
 		num = a->top->num;
-		while (j++ < a->size)
+		while (j < a->size)
 		{
 			if (string[j] == num)
-			{
 				a->top->index = j;
-				break ;
-			}
+			j++;
 		}
 		rotate_stack(a);
 	}
